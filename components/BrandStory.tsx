@@ -36,8 +36,7 @@ export default function BrandStory() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#F5E9D3] via-[#F5ECDD] to-[#F8F4EC] py-28">
-
+    <section className="relative overflow-hidden bg-[#B89B72] py-28">
       {/* Background Blur */}
 
       <div className="absolute inset-0 overflow-hidden">
@@ -103,7 +102,7 @@ export default function BrandStory() {
           >
 
             <Image
-              src="/images/farm.jpg"
+              src="/products/farm.png"
               alt="Pure Herbal Products"
               width={700}
               height={800}
@@ -303,12 +302,7 @@ export default function BrandStory() {
         }}
         className="pointer-events-none absolute left-6 top-24 hidden opacity-20 lg:block"
       >
-        <Image
-          src="/images/leaf-left.png"
-          alt=""
-          width={140}
-          height={140}
-        />
+        
       </motion.div>
 
       <motion.div
@@ -323,12 +317,7 @@ export default function BrandStory() {
         }}
         className="pointer-events-none absolute bottom-16 right-6 hidden opacity-20 lg:block"
       >
-        <Image
-          src="/images/leaf-right.png"
-          alt=""
-          width={140}
-          height={140}
-        />
+        
       </motion.div>
 
       {/* Bottom Decoration */}

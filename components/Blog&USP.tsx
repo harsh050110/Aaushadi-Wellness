@@ -42,19 +42,19 @@ const uspItems = [
 
 const blogs = [
   {
-    image: "/images/blog1.jpg",
+    image: "/Images/Blog1.png",
     category: "WELLNESS POWDERS",
     title: "Top Health Benefits of Amla You Should Know",
     date: "10 Jul, 2026",
   },
   {
-    image: "/images/blog2.jpg",
+    image: "/Images/Blog2.jpg",
     category: "WELLNESS POWDERS",
     title: "Why Beetroot Deserves a Place in Your Daily Diet",
     date: "9 Jul, 2026",
   },
   {
-    image: "/images/blog3.jpg",
+    image: "/Images/Blog3.jpg",
     category: "WELLNESS POWDERS",
     title: "Bhringraj Powder: Benefits, Uses & How to Consume It",
     date: "7 Jul, 2026",
@@ -63,7 +63,7 @@ const blogs = [
 
 export default function BlogAndUSP() {
   return (
-    <section className="relative overflow-hidden bg-[#F5E9D3] py-28">
+    <section className="relative overflow-hidden bg-[url('/products/bg.png')] py-28">
 
       {/* Background */}
 
