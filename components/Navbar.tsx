@@ -266,7 +266,7 @@ export default function Navbar() {
       {/* ================= HEADER ================= */}
 
       <header
-        className="sticky top-0 z-[100] border-b border-[#E5D5B8]"
+        className="sticky top-0 z-[100] border-b border-[#F3ECD7B9]"
         style={{
           background:
             "rgba(248,244,236,.90)",
@@ -432,7 +432,7 @@ export default function Navbar() {
 
             {/* Divider */}
 
-            <div className="h-6 w-px bg-[#D8C7A7]" />
+            <div className="h-6 w-px bg-[#F3ECD7B9]" />
 
             {/* Login */}
 
