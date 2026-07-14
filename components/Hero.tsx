@@ -197,7 +197,7 @@ export default function Hero() {
     className="absolute right-40 bottom-28 h-7 w-7 rounded-full bg-green-200/40"
   />
 
-  <div className="mx-auto grid min-h-[90vh] max-w-7xl grid-cols-1 items-center gap-16 px-6 py-20 lg:grid-cols-2 lg:px-10">
+  <div className="mx-auto grid min-h-[76vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 lg:grid-cols-2 lg:px-10">
 
     {/* LEFT */}
 
@@ -216,7 +216,7 @@ export default function Hero() {
           {slide.badge}
         </span>
 
-        <h1 className="mt-8 text-5xl font-black leading-tight text-[#30412D] lg:text-6xl">
+        <h1 className="mt-6 text-4xl font-black leading-[1.1] text-[#30412D] lg:text-5xl">
 
           {slide.title}
 
@@ -226,13 +226,13 @@ export default function Hero() {
 
         </h1>
 
-        <p className="mt-8 max-w-xl text-lg leading-8 text-[#5F6258]">
+        <p className="mt-6 max-w-lg text-base leading-7 text-[#5F6258]">
           {slide.description}
         </p>
 
         <div className="mt-10">
 
-          <h2 className="text-7xl font-black tracking-tight text-[#B17A32] lg:text-8xl">
+          <h2 className="text-5xl font-black tracking-tight text-[#B17A32] lg:text-6xl">
             {slide.offer}
           </h2>
 
@@ -249,7 +249,7 @@ export default function Hero() {
             y: -4,
             scale: 1.03,
           }}
-          className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-[#E3D5BE] bg-white/80 px-8 py-5 shadow-lg backdrop-blur"
+         className="mt-7 inline-flex items-center gap-3 rounded-2xl border border-[#E3D5BE] bg-white/80 px-6 py-4 shadow-lg backdrop-blur"
         >
 
           <span className="text-lg text-gray-600">
@@ -264,7 +264,7 @@ export default function Hero() {
 
         {/* Buttons */}
 
-        <div className="mt-10 flex flex-wrap gap-5">
+        <div className="mt-8 flex flex-wrap gap-4">
 
           <motion.button
             whileHover={{
@@ -274,7 +274,7 @@ export default function Hero() {
             whileTap={{
               scale: .95,
             }}
-            className="group flex items-center gap-3 rounded-full bg-[#355A29] px-8 py-4 font-semibold text-white shadow-xl transition-all"
+           className="group flex items-center gap-3 rounded-full bg-[#355A29] px-7 py-3.5 font-semibold text-white shadow-xl transition-all"
           >
 
             {slide.primaryBtn}
@@ -290,7 +290,7 @@ export default function Hero() {
             whileHover={{
               scale: 1.04,
             }}
-            className="rounded-full border-2 border-[#355A29] bg-white px-8 py-4 font-semibold text-[#355A29]"
+            className="rounded-full border-2 border-[#355A29] bg-white px-7 py-3.5 font-semibold text-[#355A29]"
           >
             {slide.secondaryBtn}
           </motion.button>
@@ -324,12 +324,12 @@ export default function Hero() {
             repeat: Infinity,
             duration: 5,
           }}
-          className="absolute h-[500px] w-[500px] rounded-full bg-gradient-to-br from-[#E8D5B4] via-[#F6EAD5] to-[#EFE2CC] blur-sm"
+          className="absolute h-[420px] w-[420px] rounded-full bg-gradient-to-br from-[#E8D5B4] via-[#F6EAD5] to-[#EFE2CC] blur-sm"
         />
 
         {/* Ring */}
 
-        <div className="absolute h-[560px] w-[560px] rounded-full border border-white/50" />
+        <div className="absolute h-[470px] w-[470px] rounded-full border border-white/50" />
 
         {/* Floating Leaf */}
 
@@ -365,8 +365,8 @@ export default function Hero() {
 
         <motion.div
           animate={{
-            y: [-12, 12, -12],
-          }}
+  y: [-8, 8, -8],
+}}
           transition={{
             repeat: Infinity,
             duration: 5,
@@ -377,8 +377,8 @@ export default function Hero() {
           <Image
             src={slide.image}
             alt={slide.title}
-            width={520}
-            height={520}
+            width={440}
+            height={440}
             priority
             className="drop-shadow-[0_35px_45px_rgba(0,0,0,0.18)]"
           />
@@ -396,7 +396,7 @@ export default function Hero() {
       <button
         onClick={prevSlide}
         aria-label="Previous Slide"
-        className="absolute left-5 top-1/2 z-40 hidden -translate-y-1/2 rounded-full bg-white/80 p-3 shadow-xl backdrop-blur transition-all duration-300 hover:scale-110 hover:bg-white lg:flex"
+        className="absolute left-5 top-1/2 z-40 hidden -translate-y-1/2 rounded-full bg-white/80 p-2.5 shadow-xl backdrop-blur transition-all duration-300 hover:scale-110 hover:bg-white lg:flex"
       >
         <ChevronLeft className="text-[#355A29]" />
       </button>
@@ -404,14 +404,14 @@ export default function Hero() {
       <button
         onClick={nextSlide}
         aria-label="Next Slide"
-        className="absolute right-5 top-1/2 z-40 hidden -translate-y-1/2 rounded-full bg-white/80 p-3 shadow-xl backdrop-blur transition-all duration-300 hover:scale-110 hover:bg-white lg:flex"
+        className="absolute right-5 top-1/2 z-40 hidden -translate-y-1/2 rounded-full bg-white/80 p-2.5 shadow-xl backdrop-blur transition-all duration-300 hover:scale-110 hover:bg-white lg:flex"
       >
         <ChevronRight className="text-[#355A29]" />
       </button>
 
       {/* Bottom Pagination */}
 
-      <div className="absolute bottom-8 left-1/2 z-40 flex -translate-x-1/2 items-center gap-3">
+      <div className="absolute bottom-8 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2">
 
         {slides.map((item, index) => (
 
@@ -432,7 +432,7 @@ export default function Hero() {
 
       {/* Slide Counter */}
 
-      <div className="absolute bottom-8 right-8 hidden items-center gap-3 rounded-full bg-white/70 px-5 py-3 text-sm font-semibold text-[#355A29] shadow-lg backdrop-blur lg:flex">
+      <div className="absolute bottom-8 right-8 hidden items-center gap-3 rounded-full bg-white/70 px-4 py-2.5 text-sm font-semibold text-[#355A29] shadow-lg backdrop-blur lg:flex">
 
         <span>
           {String(current + 1).padStart(2, "0")}
@@ -480,8 +480,8 @@ export default function Hero() {
 
       {/* Decorative Blur */}
 
-      <div className="absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-[#E6D3B1]/40 blur-[120px]" />
-      <div className="absolute -top-32 left-0 h-72 w-72 rounded-full bg-[#F8EFD9]/50 blur-[120px]" />
+      <div className="absolute -bottom-32 right-0 h-60 w-60 rounded-full bg-[#E6D3B1]/40 blur-[120px]" />
+      <div className="absolute -top-32 left-0 h-60 w-60 rounded-full bg-[#F8EFD9]/50 blur-[120px]" />
 
     </section>
   );

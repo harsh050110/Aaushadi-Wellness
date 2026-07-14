@@ -131,7 +131,7 @@ export default function BrandStory() {
 
             </p>
 
-            <p className="mt-1 text-sm font-semibold tracking-[3px] text-[#556B2F] uppercase">
+            <p className="mt-1 text-sm font-semibold tracking-[3px] text-[#000000] uppercase">
 
               Organic
 
@@ -166,7 +166,7 @@ export default function BrandStory() {
 
           </span>
 
-          <h2 className="mt-8 text-5xl font-black leading-tight text-[#2F3E2D]">
+          <h2 className="mt-8 text-5xl font-black leading-tight text-[#5C6B2E]">
 
             100% Pure <br />
 
@@ -174,7 +174,7 @@ export default function BrandStory() {
 
           </h2>
 
-          <p className="mt-8 text-lg leading-10 text-[#6A645B]">
+          <p className="mt-8 text-lg leading-10 text-[#000000]">
 
             Everything we create begins with nature.
 
@@ -228,13 +228,13 @@ export default function BrandStory() {
 
                 <div>
 
-                  <h3 className="text-xl font-bold text-[#37452F]">
+                  <h3 className="text-xl font-bold text-[#5C6B2E]">
 
                     {feature.title}
 
                   </h3>
 
-                  <p className="mt-2 text-[15px] leading-7 text-[#6C665D]">
+                  <p className="mt-2 text-[15px] leading-7 text-[#000000]">
 
                     {feature.desc}
 

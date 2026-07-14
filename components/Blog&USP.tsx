@@ -69,7 +69,7 @@ export default function BlogAndUSP() {
 
       <div className="absolute inset-0">
 
-        <div className="absolute -left-32 top-0 h-[450px] w-[450px] rounded-full bg-[#FFF5E8]/40 blur-[120px]" />
+        <div className="absolute -left-32 top-0 h-[450px] w-[450px] rounded-full bg-[#F8E9CF]/40 blur-[120px]" />
 
 <div className="absolute right-0 bottom-0 h-[380px] w-[380px] rounded-full bg-[#F8E9CF]/50 blur-[120px]" />
 
@@ -115,7 +115,7 @@ export default function BlogAndUSP() {
 
           </h2>
 
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-[#6A645B]">
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-[#000000]">
 
             Every product reflects our dedication to purity,
             sustainability, traditional Ayurvedic wisdom,
@@ -168,7 +168,7 @@ export default function BlogAndUSP() {
 
               {/* Title */}
 
-              <h3 className="mt-8 text-2xl font-bold text-[#3A342C]">
+              <h3 className="mt-8 text-2xl font-bold text-[#5C6B2E]">
 
                 {item.title}
 
@@ -176,7 +176,7 @@ export default function BlogAndUSP() {
 
               {/* Description */}
 
-              <p className="mx-auto mt-3 max-w-[220px] text-[15px] leading-7 text-[#6E665B]">
+              <p className="mx-auto mt-3 max-w-[220px] text-[15px] leading-7 text-[#ffffff]">
 
                 {item.desc}
 
@@ -240,7 +240,7 @@ export default function BlogAndUSP() {
 
         </h2>
 
-        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-[#6A645B]">
+        <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-[#000000]">
 
           Explore wellness tips, herbal knowledge,
           healthy lifestyle advice and traditional
@@ -293,7 +293,7 @@ export default function BlogAndUSP() {
 
               {/* Category */}
 
-              <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#6E8255]">
+              <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#5C6B2E]">
 
                 {blog.category}
 
@@ -302,7 +302,7 @@ export default function BlogAndUSP() {
               {/* Title */}
 
               <h3
-                className="text-[22px] font-bold leading-tight text-[#2F3E2D]"
+                className="text-[22px] font-bold leading-tight text-[#5C6B2E]"
                 style={{
                   fontFamily: "var(--font-playfair)",
                 }}
@@ -312,7 +312,7 @@ export default function BlogAndUSP() {
 
               {/* Description */}
 
-              <p className="mt-3 text-sm leading-relaxed text-[#6B665C]">
+              <p className="mt-3 text-sm leading-relaxed text-[#000000]">
 
                 Discover expert Ayurvedic insights, natural wellness tips,
                 and healthy lifestyle guidance for everyday living.
@@ -323,7 +323,7 @@ export default function BlogAndUSP() {
 
               <div className="mt-auto flex items-center justify-between pt-6">
 
-                <span className="text-sm text-[#7A756A]">
+                <span className="text-sm text-[#000000] opacity-70">
 
                   {blog.date}
 

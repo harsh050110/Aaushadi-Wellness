@@ -64,15 +64,15 @@ export default function Seasonal({ products }: Props) {
 
     <div className="text-center mb-16">
 
-      <span className="inline-flex items-center rounded-full border border-[#D7C6A5] bg-white px-5 py-2 text-sm font-semibold tracking-[4px] text-[#556B2F] shadow-sm">
+      <span className="inline-flex items-center rounded-full border border-[#D7C6A5] bg-white px-5 py-2 text-sm font-semibold tracking-[4px] text-[#5C6B2E] shadow-sm">
   SEASONAL COLLECTION
 </span>
 
-<h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#2E3A28]">
+<h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#5C6B2E]">
   Wellness For Every Season
 </h2>
 
-<p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-[#6B665C]">
+<p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-[#000000]">
   Discover our specially curated seasonal Ayurvedic products,
   thoughtfully crafted to support your body through every climate,
   festival, and changing lifestyle.

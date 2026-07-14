@@ -71,7 +71,7 @@ export default function Footer() {
             duration: 12,
             repeat: Infinity,
           }}
-          className="absolute -left-44 top-0 h-[420px] w-[420px] rounded-full bg-[#FFF6E8]/50 blur-[120px]"
+          className="absolute -left-44 top-0 h-[420px] w-[420px] rounded-full bg-[#ECD7B9] blur-[120px]"
         />
 
         <motion.div
@@ -82,7 +82,7 @@ export default function Footer() {
             duration: 15,
             repeat: Infinity,
           }}
-          className="absolute bottom-0 right-0 h-[380px] w-[380px] rounded-full bg-[#E8D7B8]/40 blur-[120px]"
+          className="absolute bottom-0 right-0 h-[380px] w-[380px] rounded-full bg-[#ECD7B9] blur-[120px]"
         />
 
         <Image
@@ -135,7 +135,7 @@ export default function Footer() {
 
               </span>
 
-              <h2 className="mt-6 text-5xl font-black text-[#2F3E2D]">
+              <h2 className="mt-6 text-5xl font-black text-[#000000]">
 
                 Stay Connected
 
