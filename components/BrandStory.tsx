@@ -36,7 +36,7 @@ export default function BrandStory() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#FDF8F1] py-28">
+    <section className="relative overflow-hidden bg-[#ECD7B9] py-28">
       {/* Background Blur */}
 
       <div className="absolute inset-0 overflow-hidden">

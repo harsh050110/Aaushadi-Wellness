@@ -81,7 +81,7 @@ export default function Navbar() {
 
           <div
             onClick={closeMenu}
-            className="absolute inset-0 bg-[#F3ECD7B9] backdrop-blur-xl"
+            className="absolute inset-0 bg-[#ECD7B9] backdrop-blur-xl"
           />
 
           {/* Close */}

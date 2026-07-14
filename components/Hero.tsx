@@ -178,11 +178,11 @@ export default function Hero() {
 
   return (
     <section
-  className={`relative overflow-hidden bg-gradient-to-br ${slide.background}`}
+  className={`relative overflow-hidden bg-[#EED9BB] py-28`}
 >
   {/* Decorative Blobs */}
-  <div className="absolute -top-24 -right-20 h-[420px] w-[420px] rounded-full bg-[#E6D2AE]/40 blur-3xl" />
-  <div className="absolute -bottom-20 -left-20 h-[300px] w-[300px] rounded-full bg-[#F2E7D3]/70 blur-3xl" />
+  <div className="absolute -top-24 -right-20 h-[420px] w-[420px] rounded-full bg-[#EED9BB]/40 blur-3xl" />
+  <div className="absolute -bottom-20 -left-20 h-[300px] w-[300px] rounded-full bg-[#EED9BB]/60 blur-3xl" />
 
   {/* Small Floating Circles */}
   <motion.div

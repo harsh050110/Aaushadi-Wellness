@@ -57,7 +57,7 @@ const enquire = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#F5E9D3] pt-24">
+    <footer className="relative overflow-hidden bg-[#ECD7B9] pt-24">
 
       {/* Background */}
 
