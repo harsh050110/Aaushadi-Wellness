@@ -36,7 +36,7 @@ export default function BrandStory() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#B89B72] py-28">
+    <section className="relative overflow-hidden bg-[#FDF8F1] py-28">
       {/* Background Blur */}
 
       <div className="absolute inset-0 overflow-hidden">
@@ -49,7 +49,7 @@ export default function BrandStory() {
             duration: 10,
             repeat: Infinity,
           }}
-          className="absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-[#E7D8B5]/40 blur-[120px]"
+          className="absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-[#FFF7EB]/40 blur-[120px]"
         />
 
         <motion.div
@@ -166,7 +166,7 @@ export default function BrandStory() {
 
           </span>
 
-         <h2 className="mt-8 text-5xl font-black leading-tight text-[#5C6B2E] font-playfair">
+         <h2 className="mt-8 text-5xl font-black leading-tight text-[#324B20] font-playfair">
 
             100% Pure <br />
 
@@ -174,7 +174,7 @@ export default function BrandStory() {
 
           </h2>
 
-          <p className="mt-8 text-lg leading-10 text-[#000000]">
+          <p className="mt-8 text-lg leading-10 text-[#4B463D]">
 
             Everything we create begins with nature.
 
@@ -271,7 +271,7 @@ export default function BrandStory() {
 
             <Link
               href="/about"
-              className="group inline-flex items-center gap-4 rounded-full bg-[#556B2F] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-[#405122] hover:shadow-2xl"
+              className="group inline-flex items-center gap-4 rounded-full bg-[#6A8A34] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-[#5C6B2E] hover:shadow-2xl"
             >
 
               Discover Our Story
