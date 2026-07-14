@@ -63,7 +63,13 @@ const blogs = [
 
 export default function BlogAndUSP() {
   return (
-    <section className="relative overflow-hidden bg-[url('/products/bg.png')] py-28">
+  <section
+  className="relative overflow-hidden py-24 bg-no-repeat bg-top"
+  style={{
+    backgroundImage: "url('/products/bg.png')",
+    backgroundSize: "100% 100%",
+  }}
+>
 
       {/* Background */}
 

@@ -48,7 +48,17 @@ export default function Seasonal({ products }: Props) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[url('/products/bg.png')] py-24">
+    <section
+  className="
+    relative
+    overflow-hidden
+    bg-[url('/products/bg.png')]
+    bg-cover
+    bg-center
+    bg-no-repeat
+    py-24
+  "
+>
   {/* Background Glow */}
   <div className="absolute inset-0 overflow-hidden">
     <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#E7D8B5]/40 blur-3xl" />
