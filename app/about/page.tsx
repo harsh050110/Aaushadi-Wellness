@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -146,6 +147,10 @@ export default function AboutPage() {
             "linear-gradient(170deg, #EDE3CA 0%, #F5EAD6 15%, #F2D4C0 35%, #ECC8B8 48%, #E0C8C4 55%, #D4CEDB 65%, #C8D6E2 78%, #D0DBE6 90%, #D6DDE8 100%)",
         }}
       >
+        <div className="absolute top-12 left-8 animate-float">
+    🌿
+</div>
+
         {/* Decorative leaf — top right */}
         <div className="absolute -top-4 -right-4 w-72 md:w-96 h-72 md:h-96 opacity-25 pointer-events-none select-none z-0">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -230,6 +235,9 @@ export default function AboutPage() {
                     crafted with a deep commitment to purity, transparency, and sustainability. From
                     seed to shelf, we ensure nature&apos;s goodness reaches you in its truest form.
                   </p>
+                  <div className="mt-12 text-center text-3xl text-[#8C9B5A]">
+  🌿 ✦ 🍃 ✦ 🌿
+</div>
                 </GlassCard>
               </div>
             </section>
@@ -269,9 +277,13 @@ export default function AboutPage() {
                     <FeatureIconCircle>
                       <LeafIcon className="text-olive" />
                     </FeatureIconCircle>
-                    <h3 className="text-sm font-bold text-text-dark mb-1" style={playfair}>
-                      100% Pure Herbal Product
-                    </h3>
+                    <h2
+  className="mt-8 text-5xl font-black leading-tight text-[#5C6B2E]"
+  style={{ fontFamily: "var(--font-playfair)" }}
+>
+  🌿 100% Pure <br />
+  Herbal Products 🍃
+</h2>
                     <p className="text-text-muted text-xs leading-snug">
                       Pure herbs, pure care, pure you.
                     </p>
@@ -283,7 +295,7 @@ export default function AboutPage() {
                       <SproutIcon className="text-olive" />
                     </FeatureIconCircle>
                     <h3 className="text-sm font-bold text-text-dark mb-1" style={playfair}>
-                      Sourced From Our Own Farm
+                      Sourced From 🌱 Own Farm
                     </h3>
                     <p className="text-text-muted text-xs leading-snug">
                       Grown with love, harvested with care.
@@ -337,7 +349,15 @@ export default function AboutPage() {
                   <div className="mb-6">
                     <SectionDivider>
                       <span className="text-olive font-bold text-lg whitespace-nowrap" style={playfair}>
-                        Our Promise
+                        <span className="inline-flex items-center gap-2 rounded-full border border-[#D7C6A5] bg-white px-5 py-2 text-sm font-semibold tracking-[4px] text-[#556B2F]">
+
+  <span>🌿</span>
+
+  OUR PROMISE
+
+  <span>🍃</span>
+</span>
+                        
                       </span>
                     </SectionDivider>
                   </div>
@@ -497,11 +517,11 @@ export default function AboutPage() {
             <section className="px-4 md:px-8 py-16" id="about-cta">
               <div className="max-w-2xl mx-auto text-center">
                 <p
-                  className="text-olive font-bold text-lg md:text-xl tracking-wide mb-3"
-                  style={playfair}
-                >
-                  Pure by Nature. Trusted by You. Crafted with Love.
-                </p>
+  className="mt-6 text-lg italic text-[#6F7F47]"
+  style={{ fontFamily: "var(--font-playfair)" }}
+>
+  ❋ Rooted in Nature • Crafted with Care • Trusted by Families ❋
+</p>
                 <p className="text-text-muted text-sm md:text-base mb-8">
                   Choose wellness. Choose purity. Choose{" "}
                   <strong className="text-olive">AAUSHADHI WELLNESS</strong>.

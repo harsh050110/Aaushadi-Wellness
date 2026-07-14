@@ -73,7 +73,7 @@ export default function ProductCarousel({ products }: Props) {
         OUR BEST SELLERS
       </span>
 
-      <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#2E3A28] font-playfair">
+      <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#000000] font-playfair">
         Nature's Finest Collection
       </h2>
 
