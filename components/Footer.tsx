@@ -243,33 +243,15 @@ export default function Footer() {
             {/* Social */}
 
             <div className="mt-8 flex gap-4">
-
-              
-                {[
-  FaFacebookF,
-  FaInstagram,
-  FaWhatsapp,
-].map((Icon, index) => (
-
-                <motion.a
-                  key={index}
-                  whileHover={{
-                    scale: 1.1,
-                    y: -5,
-                  }}
-                  whileTap={{
-                    scale: .95,
-                  }}
-                  href="#"
-                  className="flex h-14 w-14 items-center justify-center rounded-full border border-[#D8C8A8] bg-white text-[#556B2F] shadow-md transition-all duration-300 hover:bg-[#556B2F] hover:text-white"
-                >
-
-                  <Icon size={22} />
-
-                </motion.a>
-
+              {[
+                { icon: FaFacebookF, href: "https://www.facebook.com/share/1EL3uvziQP/?mibextid=wwXIfr" },
+                { icon: FaInstagram, href: "https://www.instagram.com/aaushadhi_wellness/" },
+                { icon: FaWhatsapp, href: "https://wa.me/918269431640" },
+              ].map(({ icon: Icon, href }, idx) => (
+                <a key={idx} href={href} target="_blank" rel="noreferrer" className="text-[#6A645B] hover:text-black">
+                  <Icon />
+                </a>
               ))}
-
             </div>
 
           </motion.div>
