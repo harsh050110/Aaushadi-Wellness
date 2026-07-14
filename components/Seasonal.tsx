@@ -78,7 +78,7 @@ export default function Seasonal({ products }: Props) {
   SEASONAL COLLECTION
 </span>
 
-<h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#5C6B2E] font-playfair">
+<h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#000000] font-playfair">
   Wellness For Every Season
 </h2>
 
