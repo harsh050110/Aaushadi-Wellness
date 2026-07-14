@@ -216,7 +216,7 @@ export default function Hero() {
           {slide.badge}
         </span>
 
-        <h1 className="mt-6 text-4xl font-black leading-[1.1] text-[#30412D] lg:text-5xl">
+        <h1 className="mt-6 text-4xl font-black leading-[1.1] text-[#30412D] lg:text-5xl font-playfair">
 
           {slide.title}
 
@@ -232,7 +232,7 @@ export default function Hero() {
 
         <div className="mt-10">
 
-          <h2 className="text-5xl font-black tracking-tight text-[#B17A32] lg:text-6xl">
+          <h2 className="text-5xl font-black tracking-tight text-[#B17A32] lg:text-6xl font-playfair">
             {slide.offer}
           </h2>
 

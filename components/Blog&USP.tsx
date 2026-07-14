@@ -115,7 +115,7 @@ export default function BlogAndUSP() {
 
           </span>
 
-          <h2 className="mt-6 text-5xl font-black text-[#2F3E2D]">
+          <h2 className="mt-6 text-5xl font-black text-[#2F3E2D] font-playfair">
 
             Why Choose Aaushadhi?
 

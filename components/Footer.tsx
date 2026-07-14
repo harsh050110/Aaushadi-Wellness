@@ -135,7 +135,7 @@ export default function Footer() {
 
               </span>
 
-              <h2 className="mt-6 text-5xl font-black text-[#000000]">
+              <h2 className="mt-6 text-5xl font-black text-[#000000] font-playfair">
 
                 Stay Connected
 
@@ -214,7 +214,7 @@ export default function Footer() {
               <div>
 
                 <h3
-                  className="text-3xl font-bold text-[#556B2F]"
+                  className="text-3xl font-bold text-[#556B2F] font-playfair"
                   style={{
                     fontFamily: "var(--font-playfair)",
                   }}
