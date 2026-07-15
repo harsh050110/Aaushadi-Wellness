@@ -29,32 +29,120 @@ export default async function ProductsPage({ searchParams }: Props) {
       <div className="min-h-screen bg-cream">
         <Navbar />
 
-        <main className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-20">
-          {/* Page header */}
-          <div className="text-center mb-12">
-            <p className="text-olive-light text-sm font-semibold tracking-widest uppercase mb-2">
-              Explore Our Collection
-            </p>
-            <h1
-              className="text-3xl md:text-5xl font-bold text-olive leading-tight"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              Our Products
-            </h1>
-            <p className="mt-3 text-text-muted text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-              Handcrafted Ayurvedic herbal powders, sourced from nature and
-              prepared with traditional wisdom.
-            </p>
-            <div className="mt-4 mx-auto w-16 h-0.5 rounded-full bg-olive opacity-30" />
-          </div>
+        <main className="overflow-hidden">
 
-          {/* Product grid with Load More */}
-          <ProductGrid
-            products={products}
-            categories={categories.map((c) => ({ name: c.name, slug: c.slug }))}
-            initialSearch={initialSearch}
+  {/* Hero */}
+
+  <section className="relative bg-[#F2E2C8] py-20">
+
+    <div className="absolute inset-0 pointer-events-none">
+
+  <div className="
+    absolute
+    left-8
+    top-8
+    text-6xl
+    opacity-30
+  ">
+    🌿
+  </div>
+
+
+  <div className="
+    absolute
+    right-10
+    top-12
+    text-5xl
+    opacity-25
+  ">
+    🍃
+  </div>
+
+
+  <div className="
+    absolute
+    left-1/2
+    bottom-20
+    -translate-x-1/2
+    text-7xl
+    opacity-20
+  ">
+    🌱
+  </div>
+
+
+  <div className="
+    absolute
+    left-12
+    bottom-10
+    text-4xl
+    opacity-25
+  ">
+    ☘️
+  </div>
+
+
+  <div className="
+    absolute
+    right-12
+    bottom-12
+    text-4xl
+    opacity-25
+  ">
+    🌾
+  </div>
+
+</div>
+
+    <div className="relative mx-auto max-w-7xl px-6 text-center">
+
+      <h1
+        className="text-6xl font-bold text-[#556B2F]"
+        style={{
+          fontFamily: "var(--font-playfair)",
+        }}
+      >
+        Our Products
+      </h1>
+
+      <p className="mt-6 text-xl text-[#3A3A3A]">
+        Handcrafted Ayurvedic herbal powders,
+        sourced from nature and prepared with traditional wisdom.
+      </p>
+
+      {/* Search */}
+
+      <div className="mx-auto mt-10 max-w-xl">
+
+        <div className="flex h-14 overflow-hidden rounded-full bg-white shadow-lg">
+
+          <input
+            placeholder="Search for product"
+            className="flex-1 px-8 outline-none"
           />
-        </main>
+
+          <button className="px-8">
+            🔍
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <ProductGrid
+      products={products}
+      categories={categories.map((c)=>({
+        name:c.name,
+        slug:c.slug,
+      }))}
+      initialSearch={initialSearch}
+  />
+
+</main>
 
         <Footer />
       </div>
