@@ -4,6 +4,32 @@ import { useMemo, useState } from "react";
 import type { StrapiProduct } from "@/lib/types";
 import CatalogCard from "@/components/CatalogCard";
 
+import Image from "next/image";
+
+const rawMaterials = [
+  {
+    name: "Ashwagandha",
+    image: "/Images/ashwagandha.jpg",
+  },
+  {
+    name: "Amla",
+    image: "/Images/Amla.jpg",
+  },
+  {
+    name: "Tulsi",
+    image: "/Images/Tulsi.jpg",
+  },
+  {
+    name: "Arjuna",
+    image: "/Images/Arjuna.jpg",
+  },
+  {
+    name: "Beetroot",
+    image: "/Images/beetroot.jpg",
+  },
+];
+
+
 type Props = {
   products: StrapiProduct[];
   categories: {
@@ -13,7 +39,7 @@ type Props = {
   initialSearch?: string;
 };
 
-const BATCH_SIZE = 8;
+const BATCH_SIZE =8;
 
 export default function ProductGrid({
   products,
@@ -44,6 +70,7 @@ export default function ProductGrid({
       );
     }
 
+
     return filtered;
   }, [products, activeCategory, searchQuery]);
 
@@ -57,6 +84,10 @@ export default function ProductGrid({
     setSearchQuery(e.target.value);
     setVisibleCount(BATCH_SIZE);
   };
+  const [showFilters, setShowFilters] = useState(true);
+const [sortBy, setSortBy] = useState("default");
+const [showSortMenu, setShowSortMenu] = useState(false);
+
 
   const handleCategoryChange = (slug: string) => {
     setActiveCategory(slug);
@@ -69,7 +100,7 @@ export default function ProductGrid({
       style={{
         backgroundImage: "url('/products/bg.png')",
         backgroundRepeat: "repeat",
-        backgroundSize: "650px",
+        backgroundSize: "contain",
         backgroundPosition: "center",
       }}
     >
@@ -79,17 +110,13 @@ export default function ProductGrid({
 
       <div className="absolute right-0 bottom-0 h-[350px] w-[350px] rounded-full bg-[#ECD7B9]/60 blur-[120px]" />
 
-      <img
-        src="/images/leaf-left.png"
-        alt=""
-        className="hidden lg:block absolute left-0 top-0 h-full w-44 object-cover opacity-25"
-      />
+      <div className="pointer-events-none absolute left-2 top-6 hidden select-none text-[140px] opacity-20 lg:block">
+  🍃
+</div>
 
-      <img
-        src="/images/leaf-right.png"
-        alt=""
-        className="hidden lg:block absolute right-0 top-0 h-full w-44 object-cover opacity-25"
-      />
+<div className="pointer-events-none absolute right-2 top-6 hidden select-none text-[140px] opacity-20 lg:block">
+  🍃
+</div>
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
@@ -181,72 +208,113 @@ export default function ProductGrid({
 
         {/* ================= CATEGORY ================= */}
 
-        <div className="mb-16">
-          <h3
-            className="mb-8 text-center text-4xl font-bold text-[#2F2A22]"
-            style={{
-              fontFamily: "var(--font-playfair)",
-            }}
-          >
-            Top Categories
-          </h3>
+        {/* ================= TOP CATEGORIES ================= */}
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <button
-              onClick={() => handleCategoryChange("all")}
-              className={`
-                rounded-full
-                px-8
-                py-3
-                text-sm
-                font-semibold
-                transition-all
-                ${
-                  activeCategory === "all"
-                    ? "bg-[#556B2F] text-white shadow-lg"
-                    : "border border-[#CDB48C] bg-[#F6EAD5] text-[#556B2F] hover:bg-[#556B2F] hover:text-white"
-                }
-              `}
-            >
-              All Products
-            </button>
+<div className="mb-16">
+  <h3
+    className="mb-8 text-center text-4xl font-bold text-[#2F2A22]"
+    style={{
+      fontFamily: "var(--font-playfair)",
+    }}
+  >
+    Top Categories
+  </h3>
 
-            {categories.map((cat) => (
-              <button
-                key={cat.slug}
-                onClick={() => handleCategoryChange(cat.slug)}
-                className={`
-                  rounded-full
-                  px-8
-                  py-3
-                  text-sm
-                  font-semibold
-                  transition-all
-                  ${
-                    activeCategory === cat.slug
-                      ? "bg-[#556B2F] text-white shadow-lg"
-                      : "border border-[#CDB48C] bg-[#F6EAD5] text-[#556B2F] hover:bg-[#556B2F] hover:text-white"
-                  }
-                `}
-              >
-                {cat.name}
-              </button>
-            ))}
-          </div>
-        </div>
+  {showFilters && (
+    <div className="flex flex-wrap justify-center gap-4">
+      <button
+        onClick={() => handleCategoryChange("all")}
+        className={`rounded-full px-8 py-3 text-sm font-semibold transition-all ${
+          activeCategory === "all"
+            ? "bg-[#556B2F] text-white shadow-lg"
+            : "border border-[#CDB48C] bg-[#F6EAD5] text-[#556B2F] hover:bg-[#556B2F] hover:text-white"
+        }`}
+      >
+        All Products
+      </button>
 
-        {/* ================= FILTER ================= */}
+      {categories.map((cat) => (
+        <button
+          key={cat.slug}
+          onClick={() => handleCategoryChange(cat.slug)}
+          className={`rounded-full px-8 py-3 text-sm font-semibold transition-all ${
+            activeCategory === cat.slug
+              ? "bg-[#556B2F] text-white shadow-lg"
+              : "border border-[#CDB48C] bg-[#F6EAD5] text-[#556B2F] hover:bg-[#556B2F] hover:text-white"
+          }`}
+        >
+          {cat.name}
+        </button>
+      ))}
+    </div>
+  )}
+</div>
 
-        <div className="mb-10 flex items-center justify-between border-b border-[#D9C9AF] pb-5">
-          <button className="flex items-center gap-3 text-lg font-semibold text-[#2F2A22]">
-            ☰ Filter
-          </button>
+{/* ================= FILTER & SORT ================= */}
 
-          <button className="flex items-center gap-2 text-lg font-semibold text-[#2F2A22]">
-            Sort By ▼
-          </button>
-        </div>
+<div className="relative mb-10 flex items-center justify-between border-b border-[#D9C9AF] pb-5">
+  {/* Filter Button */}
+  <button
+    onClick={() => setShowFilters(!showFilters)}
+    className="flex items-center gap-3 text-lg font-semibold text-[#2F2A22]"
+  >
+    ☰ Filter
+  </button>
 
+  {/* Sort */}
+  <div className="relative">
+    <button
+      onClick={() => setShowSortMenu(!showSortMenu)}
+      className="flex items-center gap-2 text-lg font-semibold text-[#2F2A22]"
+    >
+      Sort By ▼
+    </button>
+
+    {showSortMenu && (
+      <div className="absolute right-0 z-50 mt-2 w-56 rounded-lg border border-gray-200 bg-white shadow-lg">
+        <button
+          onClick={() => {
+            setSortBy("default");
+            setShowSortMenu(false);
+          }}
+          className="block w-full px-4 py-3 text-left hover:bg-gray-100"
+        >
+          Default
+        </button>
+
+        <button
+          onClick={() => {
+            setSortBy("price-low");
+            setShowSortMenu(false);
+          }}
+          className="block w-full px-4 py-3 text-left hover:bg-gray-100"
+        >
+          Price: Low to High
+        </button>
+
+        <button
+          onClick={() => {
+            setSortBy("price-high");
+            setShowSortMenu(false);
+          }}
+          className="block w-full px-4 py-3 text-left hover:bg-gray-100"
+        >
+          Price: High to Low
+        </button>
+
+        <button
+          onClick={() => {
+            setSortBy("name");
+            setShowSortMenu(false);
+          }}
+          className="block w-full px-4 py-3 text-left hover:bg-gray-100"
+        >
+          Name A–Z
+        </button>
+      </div>
+    )}
+  </div>
+</div>
         {/* ================= FEATURED ================= */}
 
         <div className="mb-20">
@@ -273,37 +341,38 @@ export default function ProductGrid({
         {/* ================= RAW MATERIAL ================= */}
 
         <div className="mb-20">
-          <h2
-            className="text-center text-4xl font-bold mb-10"
-            style={{
-              fontFamily: "var(--font-playfair)",
-            }}
-          >
-            Select By Raw Material
-          </h2>
+  <h2
+    className="mb-10 text-center text-4xl font-bold"
+    style={{
+      fontFamily: "var(--font-playfair)",
+    }}
+  >
+    Select By Raw Material
+  </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            {["Ashwagandha", "Amla", "Tulsi", "Arjuna", "Shatavari"].map((item) => (
-              <div key={item} className="flex flex-col items-center">
-                <div
-                  className="
-                    w-36
-                    h-36
-                    rounded-full
-                    overflow-hidden
-                    border-4
-                    border-white
-                    shadow-lg
-                    bg-[#F6EBD6]
-                  "
-                />
-
-                <h3 className="mt-4 font-semibold text-[#556B2F]">{item}</h3>
-              </div>
-            ))}
-          </div>
+  <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
+    {rawMaterials.map((item) => (
+      <div
+        key={item.name}
+        className="flex cursor-pointer flex-col items-center transition-transform duration-300 hover:scale-105"
+      >
+        <div className="h-36 w-36 overflow-hidden rounded-full border-4 border-white bg-[#F6EBD6] shadow-lg">
+          <Image
+            src={item.image}
+            alt={item.name}
+            width={144}
+            height={144}
+            className="h-full w-full object-cover"
+          />
         </div>
 
+        <h3 className="mt-4 text-lg font-semibold text-[#556B2F]">
+          {item.name}
+        </h3>
+      </div>
+    ))}
+  </div>
+</div>
         {/* ================= BEST SELLERS ================= */}
 
         <div className="mb-20">

@@ -141,10 +141,14 @@ export default function ContactPage() {
     <>
       <div
         className="relative min-h-screen overflow-clip"
-        style={{
-          background:
-            "linear-gradient(170deg, #EDE3CA 0%, #F5EAD6 12%, #EFE0C8 28%, #E8D5C0 40%, #E4D0C2 50%, #DDD0CE 62%, #D4CEDB 72%, #CCD4E0 85%, #D0DBE6 100%)",
-        }}
+        
+          style={{
+  backgroundImage: "url('/products/bg.png')",
+  backgroundSize: "contain",
+  backgroundPosition: "center",
+  backgroundRepeat: "repeat",
+}}
+        
       >
         {/* ── Decorative elements ── */}
         <FloatingLeaf className="absolute -top-8 -right-8 w-80 md:w-[420px] h-80 md:h-[420px] opacity-20 pointer-events-none select-none z-0" />
