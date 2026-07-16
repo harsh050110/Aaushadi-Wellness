@@ -196,6 +196,25 @@ export default function ContactPage() {
     alt=""
     className="absolute left-1/2 top-0 -translate-x-1/2 w-24 opacity-40 pointer-events-none"
   />
+  {/* ================= PAGE HEADING ================= */}
+<section className="pt-12 md:pt-16 pb-6">
+  <div className="max-w-7xl mx-auto px-6 text-center">
+    <p className="text-sm uppercase tracking-[0.3em] text-[#7A8C3A] font-semibold mb-3">
+      Get In Touch
+    </p>
+
+    <h1
+      className="text-4xl md:text-6xl font-bold text-[#1F1F1F]"
+      style={{ fontFamily: "var(--font-playfair)" }}
+    >
+      Contact Us
+    </h1>
+
+    <div className="mt-5 flex justify-center">
+      <div className="h-[3px] w-20 rounded-full bg-[#7A8C3A]" />
+    </div>
+  </div>
+</section>
 
 {/* ================= CONTACT HERO ================= */}
 
