@@ -147,7 +147,7 @@ export default function Footer() {
               </div>
 
 
-              <button className="group flex h-16 items-center justify-center gap-3 rounded-full bg-[#556B2F] px-8 font-semibold text-white transition hover:bg-[#405122]">
+              <button className="group flex h-16 items-center justify-center gap-3 rounded-full bg-[#355A29] px-8 font-semibold text-white transition hover:bg-[#405122]">
 
                 Subscribe
 

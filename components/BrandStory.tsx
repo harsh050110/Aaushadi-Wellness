@@ -271,7 +271,7 @@ export default function BrandStory() {
 
             <Link
               href="/about"
-              className="group inline-flex items-center gap-4 rounded-full bg-[#6A8A34] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-[#5C6B2E] hover:shadow-2xl"
+              className="group inline-flex items-center gap-4 rounded-full bg-[#355A29] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-[#5C6B2E] hover:shadow-2xl"
             >
 
               Discover Our Story

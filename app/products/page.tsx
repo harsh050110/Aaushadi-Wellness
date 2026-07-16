@@ -110,24 +110,7 @@ export default async function ProductsPage({ searchParams }: Props) {
         sourced from nature and prepared with traditional wisdom.
       </p>
 
-      {/* Search */}
-
-      <div className="mx-auto mt-10 max-w-xl">
-
-        <div className="flex h-14 overflow-hidden rounded-full bg-white shadow-lg">
-
-          <input
-            placeholder="Search for product"
-            className="flex-1 px-8 outline-none"
-          />
-
-          <button className="px-8">
-            🔍
-          </button>
-
-        </div>
-
-      </div>
+      
 
     </div>
 
