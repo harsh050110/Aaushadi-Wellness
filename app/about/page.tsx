@@ -404,7 +404,7 @@ boxShadow:
         }}
 >
 <Image
-src="/about/story.jpg"      // Replace with your image
+src="/Images/ourstory.jpg"      // Replace with your image
 alt="Our Story"
 width={650}
 height={750}
@@ -571,7 +571,7 @@ boxShadow:
 <div className="overflow-hidden rounded-[24px] shadow-xl sm:rounded-[34px]">
 
 <Image
-src="/about/promise.jpg"
+src="/Images/ourpromise.jpg"
 alt="Our Promise"
 width={650}
 height={850}
