@@ -31,10 +31,26 @@ const quickLinks = [
 ];
 
 const policies = [
-  "Terms Of Use",
-  "Return Policy",
-  "Privacy Policy",
-  "Cancellation Policy",
+  {
+    title: "Terms of Use",
+    href: "/terms-of-use",
+  },
+  {
+    title: "Policies",
+    href: "/policies",
+  },
+  {
+    title: "Return Policy",
+    href: "/return-policy",
+  },
+  {
+    title: "Privacy Policy",
+    href: "/privacy-policy",
+  },
+  {
+    title: "Cancellation Policy",
+    href: "/cancellation-policy",
+  },
 ];
 
 const enquire = [
@@ -346,23 +362,18 @@ export default function Footer() {
 
             <ul className="space-y-5">
 
-              {policies.map((item)=>(
-                <li key={item}>
-
+              {policies.map((item) => (
+                <li key={item.title}>
                   <Link
-                    href="#"
+                    href={item.href}
                     className="group flex items-center gap-2 text-[#5F5B54] transition hover:text-[#556B2F]"
                   >
-
                     <ArrowRight
                       size={15}
                       className="opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100"
                     />
-
-                    {item}
-
+                    {item.title}
                   </Link>
-
                 </li>
               ))}
 
