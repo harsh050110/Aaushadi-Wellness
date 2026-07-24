@@ -36,10 +36,6 @@ const policies = [
     href: "/terms-of-use",
   },
   {
-    title: "Policies",
-    href: "/policies",
-  },
-  {
     title: "Return Policy",
     href: "/return-policy",
   },
@@ -350,17 +346,20 @@ export default function Footer() {
             }}
           >
 
-            <h4
+            
+
+
+            <ul className="space-y-5">
+
+
+              <h4
               className="mb-8 text-3xl font-bold text-[#556B2F]"
               style={{
                 fontFamily:"var(--font-playfair)"
               }}
             >
-              Policy
+              Privacy & Policies
             </h4>
-
-
-            <ul className="space-y-5">
 
               {policies.map((item) => (
                 <li key={item.title}>
