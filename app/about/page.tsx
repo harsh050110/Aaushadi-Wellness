@@ -168,9 +168,19 @@ return (
 <>
 <Navbar />
 
-<main className="overflow-x-hidden">
+<main
+  className="overflow-x-hidden"
+  style={{
+    backgroundImage: "url('/products/bg.png')",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundColor: "#ECD7B9",
+    backgroundAttachment: "fixed", // Optional: creates a premium scrolling effect
+  }}
+>
 {/* ── Hero ── */}
-<section className="relative flex min-h-[50vh] items-center overflow-hidden bg-[#ECD7B9] py-8 sm:py-10 md:min-h-[70vh] md:py-14">
+<section className="relative flex min-h-[50vh] items-center overflow-hidden py-8 sm:py-10 md:min-h-[70vh] md:py-14">
 {/* Decorative Leaves */}
 <div className="absolute left-4 top-8 text-2xl opacity-10 sm:left-8 sm:top-12 sm:text-4xl">🌿</div>
 <div className="absolute right-4 top-10 text-xl opacity-10 sm:right-10 sm:top-16 sm:text-3xl">🍃</div>
@@ -192,71 +202,42 @@ alt="Aaushadhi Wellness"
 className="relative mx-auto h-16 w-16 object-contain sm:h-24 sm:w-24 md:h-32 md:w-32"
 />
 </div>
-
-{/* Brand */}
-<h1
-className="mt-4 text-xl font-bold text-[#556B2F] sm:text-3xl md:text-5xl"
-style={{ fontFamily: "var(--font-playfair)" }}
->
-        Aaushadhi Wellness
-</h1>
-
-{/* Divider */}
-<div className="mt-3 h-px w-24 bg-[#556B2F]/25" />
-
-{/* Tagline */}
-<p className="mt-4 max-w-3xl text-sm leading-relaxed text-[#1F1F1F] md:text-xl">
-        Rooted in Nature.
-<span className="mx-2 text-[#556B2F]">•</span>
-        Backed by Purity.
-<span className="mx-2 text-[#556B2F]">•</span>
-        Made for Wellness.
-</p>
-
-{/* Intro */}
-<p className="mt-4 max-w-2xl text-xs leading-6 text-[#5B564F] sm:text-sm sm:leading-7 md:text-base">
-        Every formulation is inspired by centuries of Ayurvedic wisdom,
-        crafted from carefully cultivated herbs, and created to support
-        natural wellness through purity, authenticity, and trust.
-</p>
-
 </div>
+
+{/* Section Badge */}
+
+<div className="flex justify-center">
+  <span
+    className="
+      inline-flex
+      items-center
+      gap-2
+      rounded-full
+      border
+      border-[#CDB58A]
+      bg-white/70
+      px-5
+      py-2
+      text-xs
+      font-semibold
+      uppercase
+      tracking-[0.25em]
+      text-[#5C6B2E]
+      backdrop-blur-sm
+      shadow-sm
+    "
+  >
+    🌿 Aaushadhi Wellness
+  </span>
 </div>
-</section>
-
-<section
-className="relative overflow-hidden py-12 sm:py-20 md:py-28"
-style={{
-backgroundImage: "url('/products/bg.png')",
-backgroundRepeat: "no-repeat",
-backgroundPosition: "center",
-backgroundSize: "cover",
-backgroundColor: "#ECD7B9",
-}}
->
-{/* Left Leaves */}
-<img
-src="/images/leaf-left.png"
-className="absolute left-0 top-0 hidden w-40 opacity-30 sm:block"
-alt=""
-/>
-
-{/* Right Leaves */}
-<img
-src="/images/leaf-right.png"
-className="absolute right-0 top-0 hidden w-40 opacity-30 sm:block"
-alt=""
-/>
-
-<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
 
 {/* Heading */}
 
 <h2
-className="text-center text-2xl font-bold text-[#2F3E2D] sm:text-4xl md:text-5xl"
-style={{ fontFamily: "var(--font-playfair)" }}
+  className="mt-6 text-center text-2xl font-bold text-[#2F3E2D] sm:text-4xl md:text-5xl"
+  style={{ fontFamily: "var(--font-playfair)" }}
 >
-      About Us
+  About Us
 </h2>
 
 {/* About Card */}
@@ -477,12 +458,8 @@ fontFamily: "var(--font-playfair)",
 <section
 className="relative overflow-hidden py-14 sm:py-20 md:py-28"
 style={{
-backgroundImage: "url('/products/bg.png')",
-backgroundRepeat: "no-repeat",
-backgroundPosition: "center",
-backgroundSize: "cover",
-backgroundColor: "#ECD7B9",
-  }}
+  background: "transparent",
+}}
 >
 {/* Decorative Leaves */}
 
@@ -522,10 +499,8 @@ style={{ fontFamily: "var(--font-playfair)" }}
 <div
 className="rounded-[24px] p-6 sm:rounded-[34px] sm:p-8 md:p-12"
 style={{
-background: "#F2DFC0",
-boxShadow:
-"0 20px 45px rgba(0,0,0,.06), inset 0 1px 1px rgba(255,255,255,.4)",
-        }}
+  background: "transparent",
+}}
 >
 <ul className="space-y-5 text-sm leading-7 text-[#2E2E2E] sm:space-y-6 sm:text-lg sm:leading-8 md:space-y-8 md:text-[21px] md:leading-9">
 
@@ -591,11 +566,8 @@ className="h-64 w-full object-cover transition duration-700 hover:scale-105 sm:h
 <section
   className="relative overflow-hidden py-28"
   style={{
-    backgroundImage: "url('/products/bg.png')",
-    backgroundRepeat: "repeat",
-    backgroundSize: "700px",
-    backgroundColor: "#ECD7B9",
-  }}
+  background: "transparent",
+}}
 >
   {/* Decorative Leaves */}
 
@@ -692,8 +664,8 @@ className="h-64 w-full object-cover transition duration-700 hover:scale-105 sm:h
 <section
   className="py-24"
   style={{
-    background: "#F2DFC0",
-  }}
+  background: "transparent",
+}}
 >
   <div className="mx-auto max-w-6xl px-6 text-center">
 
