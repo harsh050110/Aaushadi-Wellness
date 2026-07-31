@@ -97,84 +97,9 @@ export default function Footer() {
       </div>
 
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      
 
-
-        {/* Newsletter */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: .7,
-          }}
-          className="mb-24 rounded-[40px] border border-white/60 bg-white/50 p-10 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,.08)]"
-        >
-
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-
-            <div>
-
-              <span className="rounded-full border border-[#D7C6A5] bg-white px-5 py-2 text-sm font-semibold tracking-[4px] text-[#556B2F]">
-                NEWSLETTER
-              </span>
-
-              <h2 className="mt-6 text-5xl font-black text-black font-playfair">
-                Stay Connected
-              </h2>
-
-              <p className="mt-5 text-lg leading-8 text-[#6A645B]">
-                Subscribe to receive herbal wellness tips,
-                exclusive offers, seasonal updates,
-                and Ayurvedic knowledge directly in your inbox.
-              </p>
-
-            </div>
-
-
-            <div className="flex flex-col gap-4 sm:flex-row">
-
-              <div className="relative flex-1">
-
-                <Mail
-                  className="absolute left-5 top-1/2 -translate-y-1/2 text-[#556B2F]"
-                  size={20}
-                />
-
-                <input
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="h-16 w-full rounded-full border border-[#D7C6A5] bg-white pl-14 pr-5 outline-none transition focus:border-[#556B2F]"
-                />
-
-              </div>
-
-
-              <button className="group flex h-16 items-center justify-center gap-3 rounded-full bg-[#355A29] px-8 font-semibold text-white transition hover:bg-[#405122]">
-
-                Subscribe
-
-                <ArrowRight
-                  size={20}
-                  className="transition group-hover:translate-x-1"
-                />
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </motion.div>
+        
 
 
         {/* Main Footer */}
@@ -439,39 +364,7 @@ export default function Footer() {
 
 
 
-            {/* Contact Card */}
-
-            <div className="mt-10 rounded-3xl border border-[#D7C6A5] bg-white/60 p-6 backdrop-blur-xl shadow-lg">
-
-              <h5 className="text-lg font-bold text-[#2F3E2D]">
-                Need Assistance?
-              </h5>
-
-
-              <p className="mt-3 text-sm leading-7 text-[#6A645B]">
-
-                Our wellness experts are available to help you choose
-                the right Ayurvedic products.
-
-              </p>
-
-
-
-              <Link href="/contact">
-
-                <button className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#556B2F] px-6 py-3 font-semibold text-white transition hover:bg-[#405122]">
-
-                  Contact Us
-
-                  <ArrowRight size={18}/>
-
-                </button>
-
-              </Link>
-
-
-            </div>
-
+            
 
           </motion.div>
 
@@ -555,7 +448,7 @@ export default function Footer() {
         </motion.div>
 
 
-      </div>
+      
 
 
 
