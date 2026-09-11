@@ -8,6 +8,7 @@ type Props = {
   onComplete: (data: {
     pincode: string;
     fullName: string;
+    phone: string;
     email: string;
     addressLine1: string;
     addressLine2: string;
@@ -21,6 +22,7 @@ type Props = {
 export default function AddressForm({ cartItems, onComplete }: Props) {
   const [pincode, setPincode] = useState("");
   const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [addressLine1, setAddressLine1] = useState("");
   const [addressLine2, setAddressLine2] = useState("");
@@ -90,6 +92,10 @@ export default function AddressForm({ cartItems, onComplete }: Props) {
       setFormError("Please enter your full name");
       return;
     }
+    if (!/^[6-9]\d{9}$/.test(phone.trim())) {
+      setFormError("Please enter a valid 10-digit mobile number");
+      return;
+    }
     if (!addressLine1.trim()) {
       setFormError("Please enter your address");
       return;
@@ -103,6 +109,7 @@ export default function AddressForm({ cartItems, onComplete }: Props) {
     onComplete({
       pincode,
       fullName: fullName.trim(),
+      phone: phone.trim(),
       email: email.trim(),
       addressLine1: addressLine1.trim(),
       addressLine2: addressLine2.trim(),
@@ -258,6 +265,29 @@ export default function AddressForm({ cartItems, onComplete }: Props) {
                   outline-none focus:border-olive/40 focus:ring-2 focus:ring-olive/10 transition-all
                   placeholder:text-text-muted/60"
               />
+            </div>
+
+            {/* Phone */}
+            <div>
+              <label className="block text-xs font-semibold text-text-dark uppercase tracking-wider mb-1.5">
+                Phone Number <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="tel"
+                inputMode="numeric"
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value.replace(/\D/g, "").slice(0, 10));
+                  setFormError("");
+                }}
+                placeholder="10-digit mobile number"
+                className="w-full px-4 py-3 rounded-xl border border-olive/20 bg-white/60 text-sm text-text-dark
+                  outline-none focus:border-olive/40 focus:ring-2 focus:ring-olive/10 transition-all
+                  placeholder:text-text-muted/60"
+              />
+              <p className="text-text-muted text-[11px] mt-1">
+                Needed by the courier partner to contact you for delivery.
+              </p>
             </div>
 
             {/* Email */}

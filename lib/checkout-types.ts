@@ -1,5 +1,7 @@
 // ─── Shipping Address (matches Strapi order.shipping-address component) ──
 export type ShippingAddress = {
+  name: string;
+  mobile: string;
   addressLine1: string;
   addressLine2?: string;
   city: string;
@@ -34,11 +36,12 @@ export type DeliveryEstimate = {
 export type PaymentMethod = "cod" | "online";
 
 // ─── Order Status (matches Strapi enum) ──
+// ─── Order Status (matches Strapi enum) ──
 export type OrderStatus =
-  | "pending"
   | "confirmed"
   | "processing"
   | "shipped"
+  | "out_for_delivery"
   | "delivered"
   | "cancelled"
   | "returned";
@@ -101,6 +104,34 @@ export type PlaceOrderResponse = {
     orderStatus: OrderStatus;
     paymentMethod: PaymentMethod;
     totalAmount: number;
+  };
+  // Present only when paymentMethod === "online" — needed to open Razorpay Checkout.
+  razorpay?: {
+    keyId: string;
+    razorpayOrderId: string;
+    amount: number; // paise
+    currency: string;
+  };
+  error?: string;
+};
+
+// ─── Payment Verification (Razorpay) ──
+
+export type PaymentVerifyRequest = {
+  orderId: string; // our AAU-... orderId
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+};
+
+export type PaymentVerifyResponse = {
+  success: boolean;
+  data?: {
+    orderId: string;
+    paymentStatus: PaymentStatus;
+    orderStatus: OrderStatus;
+    shipmentBooked: boolean;
+    alreadyProcessed?: boolean;
   };
   error?: string;
 };

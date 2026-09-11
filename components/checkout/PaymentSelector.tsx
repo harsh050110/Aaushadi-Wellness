@@ -127,26 +127,12 @@ export default function PaymentSelector({ selected, onSelect }: Props) {
           </p>
         </div>
 
-        {/* Coming Soon badge */}
-        <span className="px-2 py-0.5 rounded-full bg-earth/15 text-earth text-[10px] font-bold uppercase tracking-wider">
-          Coming Soon
-        </span>
+        {selected === "online" && (
+          <span className="px-2 py-0.5 rounded-full bg-olive text-white text-[10px] font-bold uppercase tracking-wider">
+            Selected
+          </span>
+        )}
       </button>
-
-      {/* Online payment info */}
-      {selected === "online" && (
-        <div
-          className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 text-xs animate-fade-slide-up"
-        >
-          <p className="font-semibold mb-0.5">Online Payment Coming Soon</p>
-          <p>
-            We&apos;re setting up online payment. Please select Cash on Delivery
-            for now. You&apos;ll pay the delivery partner when your order
-            arrives.
-          </p>
-        </div>
-      )}
-
     </div>
   );
 }
