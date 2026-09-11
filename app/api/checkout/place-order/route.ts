@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
-import { bookShipment, calculateTotalWeight } from "@/lib/icarry";
+import { createRazorpayOrder, getPublicKeyId } from "@/lib/razorpay";
+import { bookAndAttachShipment, updateOrder } from "@/lib/fulfillment";
 import type {
   PlaceOrderRequest,
   PlaceOrderResponse,
@@ -9,7 +10,6 @@ import type {
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || "";
-const ICARRY_PICKUP_ADDRESS_ID = parseInt(process.env.ICARRY_PICKUP_ADDRESS_ID || "0", 10);
 
 /**
  * Generate a unique customer-facing order ID.
@@ -27,10 +27,15 @@ function generateOrderId(): string {
 /**
  * POST /api/checkout/place-order
  *
- * Creates an order in Strapi, books shipment on iCarry (for COD),
- * and returns order confirmation.
+ * Creates an order in Strapi.
+ *   - COD orders: books the iCarry shipment immediately and returns confirmation.
+ *   - Online orders: creates a Razorpay order and returns the details the
+ *     frontend needs to open Razorpay Checkout. The iCarry shipment is booked
+ *     later, in /api/checkout/payment-verify, once payment is confirmed —
+ *     we never want to book (and pay courier commitment on) a shipment for
+ *     an order that hasn't actually been paid for.
  *
- * Body: PlaceOrderRequest + { idToken: string }
+ * Body: PlaceOrderRequest
  */
 export async function POST(request: NextRequest) {
   try {
@@ -56,7 +61,6 @@ export async function POST(request: NextRequest) {
       courierName,
       courierId,
       shippingCost,
-      courierEstimate,
       notes,
     } = orderData;
 
@@ -78,8 +82,11 @@ export async function POST(request: NextRequest) {
     const orderId = generateOrderId();
 
     // ─── Determine initial statuses ───
-    const orderStatus = paymentMethod === "cod" ? "confirmed" : "pending";
-    const paymentStatus = paymentMethod === "cod" ? "pending" : "pending";
+    // NOTE: Strapi's orderStatus enum has no "pending" value — unpaid vs paid
+    // is tracked separately via paymentStatus. orderStatus starts at
+    // "confirmed" for both COD and online orders.
+    const orderStatus = "confirmed";
+    const paymentStatus = "pending";
 
     // ─── Create order in Strapi ───
     const strapiPayload = {
@@ -88,13 +95,13 @@ export async function POST(request: NextRequest) {
         orderStatus,
         paymentMethod,
         paymentStatus,
-        customerName,
-        customerPhone: customerPhone || "",
         customerEmail: customerEmail || null,
         subtotal,
         shippingCost,
         totalAmount,
         shippingAddress: {
+          name: customerName,
+          mobile: customerPhone,
           addressLine1: shippingAddress.addressLine1,
           addressLine2: shippingAddress.addressLine2 || "",
           city: shippingAddress.city,
@@ -111,7 +118,9 @@ export async function POST(request: NextRequest) {
           imageUrl: item.imageUrl,
         })),
         courierName,
-        courierEstimate,
+        // Store the selected courier so payment-verify can book the same one
+        // later for online orders (COD books it right away, below).
+        courierId: String(courierId),
         notes: notes || null,
       },
     };
@@ -134,66 +143,74 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ─── Book shipment on iCarry (COD orders only for now) ───
+    const strapiJson = await strapiRes.json();
+    // IMPORTANT: Strapi v5 identifies entries by documentId for subsequent
+    // PUT/DELETE calls — NOT our custom `orderId` field and not the numeric id.
+    const documentId: string = strapiJson.data.documentId;
+
+    // ─── COD: book the shipment right away ───
     if (paymentMethod === "cod") {
-      try {
-        const totalWeight = calculateTotalWeight(items);
-        const productDescription = items
-          .map(
-            (item: OrderItemData) =>
-              `${item.productName} x${item.quantity}`
-          )
-          .join(", ");
-
-        const bookingResult = await bookShipment({
-          courierId,
-          consigneeName: customerName,
-          consigneePhone: customerPhone,
-          consigneeAddress: `${shippingAddress.addressLine1}${shippingAddress.addressLine2 ? ", " + shippingAddress.addressLine2 : ""}`,
-          consigneeCity: shippingAddress.city,
-          consigneeState: shippingAddress.state,
-          consigneePincode: shippingAddress.pincode,
-          orderValue: totalAmount,
-          isCod: true,
-          totalWeightGrams: totalWeight,
-          orderId,
-          productDescription,
-          pickupAddressId: ICARRY_PICKUP_ADDRESS_ID,
-        });
-
-        // Update order with tracking details if booking succeeded
-        if (bookingResult.shipment_id || bookingResult.awb) {
-          await fetch(`${STRAPI_URL}/api/orders/${orderId}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${STRAPI_TOKEN}`,
-            },
-            body: JSON.stringify({
-              data: {
-                icarryShipmentId: bookingResult.shipment_id || null,
-                trackingId: bookingResult.awb || null,
-                trackingUrl: bookingResult.tracking_url || null,
-                orderStatus: "processing",
-              },
-            }),
-          }).catch(() => {});
-        }
-      } catch (bookingError) {
-        // Log but don't fail the order — shipment can be booked manually
+      bookAndAttachShipment({
+        orderId,
+        documentId,
+        customerName,
+        customerPhone,
+        totalAmount,
+        paymentMethod: "cod",
+        courierId,
+        shippingAddress,
+        orderItem: items.map((item: OrderItemData) => ({
+          productName: item.productName,
+          quantity: item.quantity,
+        })),
+      }).catch((bookingError) => {
+        // Log but don't fail the order — shipment can be booked manually.
         console.error("iCarry booking failed (order still created):", bookingError);
-      }
+      });
+
+      return NextResponse.json<PlaceOrderResponse>({
+        success: true,
+        data: { orderId, orderStatus: "confirmed", paymentMethod: "cod", totalAmount },
+      });
     }
 
-    return NextResponse.json<PlaceOrderResponse>({
-      success: true,
-      data: {
+    // ─── Online: create a Razorpay order, do NOT book shipment yet ───
+    try {
+      const razorpayOrder = await createRazorpayOrder(totalAmount, orderId, {
         orderId,
-        orderStatus: orderStatus as "confirmed" | "pending",
-        paymentMethod: paymentMethod as "cod" | "online",
-        totalAmount,
-      },
-    });
+        customerName,
+      });
+
+      await updateOrder(documentId, {
+        paymentGatewayOrderId: razorpayOrder.id,
+      });
+
+      return NextResponse.json<PlaceOrderResponse>({
+        success: true,
+        data: {
+          orderId,
+          orderStatus: "confirmed",
+          paymentMethod: "online",
+          totalAmount,
+        },
+        razorpay: {
+          keyId: getPublicKeyId(),
+          razorpayOrderId: razorpayOrder.id,
+          amount: razorpayOrder.amount,
+          currency: razorpayOrder.currency,
+        },
+      });
+    } catch (err) {
+      console.error("Razorpay order creation failed:", err);
+      await updateOrder(documentId, { paymentStatus: "failed" }).catch(() => {});
+      return NextResponse.json<PlaceOrderResponse>(
+        {
+          success: false,
+          error: "Unable to initiate online payment right now. Please try Cash on Delivery.",
+        },
+        { status: 502 }
+      );
+    }
   } catch (error) {
     console.error("Place order error:", error);
     return NextResponse.json<PlaceOrderResponse>(

@@ -48,6 +48,36 @@ export async function POST(request: NextRequest) {
 
 
     // ─── Step 1: Check serviceability via iCarry ───
+    //
+    // TEMPORARY: while iCarry's business KYC is pending, set
+    // ICARRY_MOCK_MODE=true in .env.local to skip the real iCarry calls and
+    // return a fixed mock courier so the rest of checkout (incl. Razorpay)
+    // can be tested end-to-end. Remove this env var once real iCarry
+    // credentials are active.
+    if (process.env.ICARRY_MOCK_MODE === "true") {
+      const locationDetails = await getPincodeDetails(pincode);
+      if (!locationDetails) {
+        return NextResponse.json<ServiceabilityResponse>(
+          { success: false, error: "Invalid pincode. Please check and try again." },
+          { status: 400 }
+        );
+      }
+
+      return NextResponse.json<ServiceabilityResponse>({
+        success: true,
+        data: {
+          serviceable: true,
+          city: locationDetails.city,
+          state: locationDetails.state,
+          country: locationDetails.country,
+          shippingCost: 60,
+          estimatedDays: "5-7 business days (MOCK — iCarry not yet active)",
+          courierName: "Mock Courier",
+          courierId: "mock-courier-1",
+        },
+      });
+    }
+
     const serviceability = await checkServiceability(pincode);
     if (!serviceability.serviceable) {
       return NextResponse.json<ServiceabilityResponse>({
